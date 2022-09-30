@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Beer } from '@class/beer';
+import { PunkApiService } from '@service/punk-api.service';
 
 @Component({
   selector: 'app-search-beer-page',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBeerPageComponent implements OnInit {
 
-  constructor() { }
+  beers:Array<Beer> = [];
+
+  constructor(private punkApiService:PunkApiService) { }
 
   ngOnInit(): void {
+   this.punkApiService.getAllBeer().subscribe((beers) => {
+    console.log(JSON.stringify(beers[0]))
+    this.beers = beers as Array<Beer>});
   }
 
 }
