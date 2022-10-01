@@ -14,8 +14,7 @@ export class SearchBeerPageComponent implements OnInit {
   constructor(private punkApiService:PunkApiService) { }
 
   ngOnInit(): void {
-   this.punkApiService.getAllBeer().subscribe((beers) => {
-    console.log(JSON.stringify(beers[0]))
+   this.punkApiService.getAllBeer().subscribe((beers) => {    
     this.beers = beers as Array<Beer>});
   }
 

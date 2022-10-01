@@ -9,6 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './component/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { BeerListComponent } from './component/beer-list/beer-list.component';
+import { BeerSearchComponent } from './component/beer-search/beer-search.component';
+import { BeerCardComponent } from './component/beer-card/beer-card.component';
+import { BeerModalComponent } from './component/beer-modal/beer-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +20,10 @@ import { MatIconModule } from '@angular/material/icon';
     FavouriteBeerPageComponent,
     SearchBeerPageComponent,
     HeaderComponent,
+    BeerListComponent,
+    BeerSearchComponent,
+    BeerCardComponent,
+    BeerModalComponent,
   ],
   imports: [
     BrowserModule,

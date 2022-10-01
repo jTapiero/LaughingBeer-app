@@ -1,10 +1,9 @@
 <div class="SearchPage">
     <app-header></app-header>
-    <ul>
-        <li *ngFor="let beer of beers">
-            {{ beer.name}}
-        </li>
-    </ul>
+    <div class="container">
+        <app-beer-list [listbeer]="beers" ></app-beer-list>
+        <app-beer-search></app-beer-search>
+    </div>
 </div>
 
 
