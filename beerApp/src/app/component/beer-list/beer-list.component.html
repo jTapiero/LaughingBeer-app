@@ -1,4 +1,7 @@
-<div class="beerList">
-        <app-beer-card *ngFor="let item of listbeer" [beer] ="item"></app-beer-card>
-
+<div class="beerList"
+infinite-scroll
+[infiniteScrollThrottle]="500"
+[scrollWindow]="false"
+(scrolled)="onScroll()">
+    <app-beer-card *ngFor="let item of listBeer" [beer] ="item"></app-beer-card>
 </div>

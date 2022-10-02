@@ -5,7 +5,7 @@ import { Beer } from '@class/beer';
 @Component({
   selector: 'app-beer-modal',
   templateUrl: './beer-modal.component.html',
-  styleUrls: ['./beer-modal.component.scss']
+  styleUrls: ['./beer-modal.component.scss'],
 })
 export class BeerModalComponent implements OnInit {
 

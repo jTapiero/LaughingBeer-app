@@ -13,8 +13,9 @@ import { BeerListComponent } from './component/beer-list/beer-list.component';
 import { BeerSearchComponent } from './component/beer-search/beer-search.component';
 import { BeerCardComponent } from './component/beer-card/beer-card.component';
 import { BeerModalComponent } from './component/beer-modal/beer-modal.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatButtonModule} from '@angular/material/button';
     BrowserAnimationsModule,
     MatIconModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

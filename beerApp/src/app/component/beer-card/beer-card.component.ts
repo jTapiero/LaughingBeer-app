@@ -11,14 +11,15 @@ import { BeerModalComponent } from '@component/beer-modal/beer-modal.component';
 export class BeerCardComponent implements OnInit {
 
   @Input() beer:Beer = {} as Beer;
-
+  
   constructor(public modal: MatDialog) { }
 
   ngOnInit(): void {
   }
 
   openBeerModal():void{
-    this.modal.open(BeerModalComponent,{data:this.beer});
+    this.modal.open(BeerModalComponent,{data:this.beer, panelClass: 'custom-dialog-container'});
+    
   }
 
 }

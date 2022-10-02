@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-beer-search',
@@ -7,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BeerSearchComponent implements OnInit {
 
-  constructor() { }
+  foodPairedInput = new FormControl('')
 
+  constructor() { }
+  
   ngOnInit(): void {
   }
 
