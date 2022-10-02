@@ -9,10 +9,32 @@
     flex-direction: column;
     align-items: center;
     color: antiquewhite;
+    
 
     .beerImage{
+        margin-top: 24px;
         width: 140px;
         height:400px;
     }
 
+    .cardTitle{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .beerTitle{
+            margin-right: auto;
+            width: max-content;
+        }
+
+        mat-icon{
+            width: 20%;
+        }
+
+    }
+
+}
+
+.beerCard:hover{
+    cursor: pointer;
 }
