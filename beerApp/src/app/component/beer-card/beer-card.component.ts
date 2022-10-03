@@ -19,7 +19,7 @@ export class BeerCardComponent implements OnInit {
 
   openBeerModal():void{
     this.modal.open(BeerModalComponent,{data:this.beer, panelClass: 'custom-dialog-container'});
-    
+    console.log('parent click');
   }
 
 }

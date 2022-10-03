@@ -1,5 +1,44 @@
-.searchBeerContainer{
+.search-beer-container{
     background-color: #353b26;
-    width: auto;
-    height: auto;
+    width:15vw ;
+    height: 85.5vh;
+    max-height:85.5vh;
+    padding: 0;
+    margin: 0;
+}
+
+.search-container{
+    display: flex;
+    flex-direction: column;
+    color: antiquewhite;
+    margin-left: 15px;
+
+    .title{
+        display: flex;
+        flex-direction: row;
+        align-items: center;    
+
+    }
+
+    .form-container{
+        padding: 0;
+        margin:0;
+
+        .form-search{
+            margin: 15px 0 5px 0;
+            .title-search{
+                margin-bottom: 5px;
+            }
+
+            .input-search{
+                margin-bottom: 5px;
+            }
+
+            .button-search{
+                background-color: #424a30;
+                color: antiquewhite;
+            }
+        }
+    }
+
 }

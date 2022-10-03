@@ -27,6 +27,12 @@ export class PunkApiService {
     return this.httpClient.get(url);
   }
 
+  getFoodPairingSearch(searchPatternRaw:string):Observable<any> {
+    let searchPattern = searchPatternRaw.replace(" ","_")
+    let url = `${this.PUNK_API_URL}beers?food=${searchPattern}`
+    return this.httpClient.get(url);
+  }
+
 
 
 

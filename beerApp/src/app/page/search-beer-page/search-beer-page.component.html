@@ -1,8 +1,8 @@
 <div class="SearchPage">
     <app-header></app-header>
     <div class="container">
-        <app-beer-list [listBeer]="beers" ></app-beer-list>
-        <app-beer-search></app-beer-search>
+        <app-beer-list [listBeer]="beers" [isBrowseModeOn]="isBrowseModeOn" ></app-beer-list>
+        <app-beer-search (foodPairedSearch)="OnFoodPairedSearch($event)" (isBrowserModeOn)="changeMode($event)"></app-beer-search>
     </div>
 </div>
 

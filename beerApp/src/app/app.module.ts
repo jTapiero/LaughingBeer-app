@@ -16,6 +16,11 @@ import { BeerModalComponent } from './component/beer-modal/beer-modal.component'
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FavouriteComponent } from './component/favourite/favourite.component'; 
+import { AngularWebStorageModule } from 'angular-web-storage';
 
 @NgModule({
   declarations: [
@@ -27,6 +32,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     BeerSearchComponent,
     BeerCardComponent,
     BeerModalComponent,
+    FavouriteComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,12 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     MatIconModule,
     MatDialogModule,
     MatButtonModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    MatCheckboxModule,
+    FormsModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    AngularWebStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

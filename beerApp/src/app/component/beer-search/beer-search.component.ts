@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 
@@ -9,11 +9,25 @@ import { FormControl } from '@angular/forms';
 })
 export class BeerSearchComponent implements OnInit {
 
-  foodPairedInput = new FormControl('')
+  @Output() foodPairedSearch= new EventEmitter<string>()
+  @Output() isBrowserModeOn= new EventEmitter<boolean>()
+
+  foodPairedInputControl = new FormControl<string>('',{updateOn:"change"})
+  isSearchModeOn:boolean = false;
 
   constructor() { }
   
   ngOnInit(): void {
   }
 
+
+
+  onSubmitSearch(): void{
+    let searchPattern = (this.foodPairedInputControl.value )?this.foodPairedInputControl.value:"";
+    this.foodPairedSearch.emit(searchPattern)
+  }
+
+  onChange(event:any): void{
+      this.isBrowserModeOn.emit(!this.isSearchModeOn)
+  }
 }
