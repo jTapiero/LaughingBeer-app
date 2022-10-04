@@ -1,4 +1,4 @@
-<div class="beerModal ">
+<div class="beerModal">
 
     <div class="beer-image-container">
         <img class="beer-image" src="{{data.image_url}}" alt="{{data.name}}">
@@ -28,6 +28,7 @@
             <h4 class="value">{{data.contributed_by}}</h4>
         </div>
         <div class="beer-like-rate"> 
+            <app-rate-menu class="rate" *ngIf="modeModal == ListMode.FAVOURITE" class="rate"></app-rate-menu>
             <app-favourite-icon class="like" [beer]="data"></app-favourite-icon>
         </div>  
     </div>

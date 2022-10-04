@@ -23,6 +23,8 @@ import { FavouriteComponent } from './component/favourite/favourite.component';
 import { AngularWebStorageModule } from 'angular-web-storage';
 import { BeerFavouriteComponent } from './component/beer-favourite/beer-favourite.component';
 import { CheckRemoveModalComponent } from './component/check-remove-modal/check-remove-modal.component';
+import { RateMenuComponent } from './component/rate-menu/rate-menu.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { CheckRemoveModalComponent } from './component/check-remove-modal/check-
     FavouriteComponent,
     BeerFavouriteComponent,
     CheckRemoveModalComponent,
+    RateMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { CheckRemoveModalComponent } from './component/check-remove-modal/check-
     FormsModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    AngularWebStorageModule
+    AngularWebStorageModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

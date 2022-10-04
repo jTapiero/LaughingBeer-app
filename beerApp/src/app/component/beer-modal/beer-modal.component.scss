@@ -127,11 +127,14 @@
     .beer-like-rate{
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         
         .like{
             color: antiquewhite;
             margin-left: auto;
         }
+
+
     }
 
 

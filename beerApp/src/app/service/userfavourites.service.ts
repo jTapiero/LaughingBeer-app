@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Beer } from '@class/beer';
+import { Beer, favoriteBeer } from '@class/beer';
+import { BeerRating } from '@class/beer-rating';
 import { IconUpdate } from '@class/icon-update';
 import { LocalStorageService } from 'angular-web-storage';
 import { Observable, Subject } from 'rxjs';
@@ -41,7 +42,7 @@ export class UserfavouritesService {
 
    addFavouriteBeer(beer:Beer):void{
     if (!this.local.get(`${beer.id}`)) {
-      this.local.set(`${beer.id}`,beer,1,'d');
+      this.local.set(`${beer.id}`,beer as favoriteBeer,1,'d');
       this.updateFavouriteBeerSubject.next({
         beerId:beer.id,
         isFavouite:true} as IconUpdate);
@@ -66,6 +67,12 @@ export class UserfavouritesService {
         this.removeFromListSubject.next(Number(key));
     });
     this.local.clear();
+   }
+
+   updateRatingBeer(beerId:number,beerRating:BeerRating):void{
+      let beer:favoriteBeer = this.local.get(`${beerId}`);
+      beer.rating = beerRating;
+      this.local.set(`${beerId}`,beer)
    }
 
 
