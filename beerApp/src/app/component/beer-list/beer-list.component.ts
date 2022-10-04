@@ -1,7 +1,8 @@
-import { AfterViewInit } from '@angular/core';
+
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Beer } from '@class/beer';
 import { PunkApiService } from '@service/punk-api.service';
+import { UserfavouritesService } from '@service/userfavourites.service';
 import { Observer } from 'rxjs';
 
 @Component({
@@ -14,13 +15,15 @@ export class BeerListComponent implements OnInit,OnChanges {
   @ViewChild('divList')el!: ElementRef;
   @Input() listBeer:Array<Beer> = [];
   @Input() isBrowseModeOn:boolean = true;
+  @Input() isFavouriteList:boolean = false;
 
   pageNumber:number = 1;
   endScroll:boolean = false;
    
 
-  constructor(private punkApiService:PunkApiService) {
-    
+  constructor(private punkApiService:PunkApiService,
+              private userfavouritesService:UserfavouritesService ) {
+    this.removeCardFromListListener();
    }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -48,13 +51,15 @@ export class BeerListComponent implements OnInit,OnChanges {
       complete:()=>{},
     }
 
-    console.log(this.endScroll)
-    console.log(this.isBrowseModeOn)
-
-
     if (!this.endScroll && this.isBrowseModeOn) {
       this.punkApiService.getBeerPage(++this.pageNumber)
       .subscribe(handleApiResponse)     
+    }
+  }
+
+  removeFromFavouriteList(idBeer:number):void{
+    if (this.isFavouriteList) {
+      this.removeFromList(idBeer);
     }
   }
 
@@ -65,4 +70,24 @@ export class BeerListComponent implements OnInit,OnChanges {
     
   }
 
+  private removeCardFromListListener():void{
+    this.userfavouritesService.removeFromListEvent.subscribe(
+      (idBeer:number)=>{ this.removeFromFavouriteList(idBeer)}
+    );
+  }
+  
+  
+  private removeFromList(idBeer:number):void{
+    this.listBeer.forEach((beer,idx,list)=>{
+      if (beer.id == idBeer) {
+        list.splice(idx,1)
+      }
+    })
+  }
+
 }
+
+// private remove from list 
+//public remove favorite list
+
+// directive for mat icon ??

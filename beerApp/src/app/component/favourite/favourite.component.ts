@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Beer } from '@class/beer';
+import { IconUpdate } from '@class/icon-update';
 import { UserfavouritesService } from '@service/userfavourites.service';
 
 @Component({
@@ -9,19 +10,17 @@ import { UserfavouritesService } from '@service/userfavourites.service';
 })
 export class FavouriteComponent implements OnInit {
 
+  @Input() beer:Beer= {} as Beer;
   isFavourite:boolean = false;
 
   constructor(private userfavouritesService:UserfavouritesService) { }
 
-
-  @Input() beer:Beer= {} as Beer;
-
   ngOnInit(): void {
     this.isFavourite = this.userfavouritesService.isFavourite(`${this.beer.id}`)
+    this.updateIsFavouriteListener()
   }
 
   onClick(event:MouseEvent):void{
-    console.log('child click');
     event.stopPropagation()
     this.isFavourite = !this.isFavourite
     if (this.isFavourite) {
@@ -29,6 +28,19 @@ export class FavouriteComponent implements OnInit {
     } else {
       this.userfavouritesService.removeFavouriteBeer(`${this.beer.id}`)
     }
+  }
+
+
+
+  private updateIsFavouriteListener():void{
+    this.userfavouritesService.updateFavouriteBeerEvent.subscribe((newUpdate:IconUpdate) =>{
+      if (this.beer.id == newUpdate.beerId) {
+        this.isFavourite = newUpdate.isFavouite;
+      }
+    }
+
+    );
+
   }
 
 }

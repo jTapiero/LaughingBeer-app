@@ -15,7 +15,7 @@ export class SearchBeerPageComponent implements OnInit {
   constructor(private punkApiService:PunkApiService) { }
 
   ngOnInit(): void {
-    this.intiBrowseMode();
+    this.initBrowseMode();
   }
 
   OnFoodPairedSearch(data:string):void{
@@ -26,11 +26,11 @@ export class SearchBeerPageComponent implements OnInit {
   changeMode(browserStatus:boolean){
     this.isBrowseModeOn = browserStatus;
     if (this.isBrowseModeOn == true) {
-      this.intiBrowseMode();
+      this.initBrowseMode();
     }
   }
 
-  private intiBrowseMode():void{
+  private initBrowseMode():void{
     this.punkApiService.getBeerPage(1).subscribe((beers) => {    
       this.beers = beers as Array<Beer>});
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Beer } from '@class/beer';
+import { UserfavouritesService } from '@service/userfavourites.service';
 
 @Component({
   selector: 'app-favourite-beer-page',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavouriteBeerPageComponent implements OnInit {
 
-  constructor() { }
+  allFavouriteBeer:Beer[] = [];
 
-  ngOnInit(): void {
+  constructor(private userfavouritesService:UserfavouritesService) {
+    this.allFavouriteBeer = this.userfavouritesService.getAllFavouriteBeer();
+   }
+
+  
+
+
+  ngOnInit(): void { 
   }
 
 }

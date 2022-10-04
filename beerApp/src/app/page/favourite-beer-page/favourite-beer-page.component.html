@@ -1,1 +1,7 @@
-<p>favourite-beer-page works!</p>
+<div class="favourite-page">
+    <app-header></app-header>
+    <div class="container">
+       <app-beer-list [listBeer]="allFavouriteBeer" [isBrowseModeOn]="false" [isFavouriteList]="true" ></app-beer-list>
+        <app-beer-favourite></app-beer-favourite>
+    </div>
+</div>

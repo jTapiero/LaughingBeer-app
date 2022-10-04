@@ -21,6 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FavouriteComponent } from './component/favourite/favourite.component'; 
 import { AngularWebStorageModule } from 'angular-web-storage';
+import { BeerFavouriteComponent } from './component/beer-favourite/beer-favourite.component';
+import { CheckRemoveModalComponent } from './component/check-remove-modal/check-remove-modal.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { AngularWebStorageModule } from 'angular-web-storage';
     BeerCardComponent,
     BeerModalComponent,
     FavouriteComponent,
+    BeerFavouriteComponent,
+    CheckRemoveModalComponent,
   ],
   imports: [
     BrowserModule,

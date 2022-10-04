@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Beer } from '@class/beer';
 import { BeerModalComponent } from '@component/beer-modal/beer-modal.component';
@@ -19,7 +19,6 @@ export class BeerCardComponent implements OnInit {
 
   openBeerModal():void{
     this.modal.open(BeerModalComponent,{data:this.beer, panelClass: 'custom-dialog-container'});
-    console.log('parent click');
   }
 
 }
