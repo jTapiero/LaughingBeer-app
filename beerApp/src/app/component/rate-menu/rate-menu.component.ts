@@ -11,7 +11,7 @@ import { UserfavouritesService } from '@service/userfavourites.service';
 })
 export class RateMenuComponent implements OnInit {
 
-  //@Input() beer:favoriteBeer = ;
+  @Input() beer:favoriteBeer = {} as favoriteBeer;
   selectRateControl = new FormControl<BeerRating>(BeerRating.NEUTRAL,{updateOn:"change"})
 
   public get BeerRating(): BeerRating[] {
@@ -20,14 +20,13 @@ export class RateMenuComponent implements OnInit {
 
   constructor(private userfavouritesService:UserfavouritesService) {
       this.selectRateControl.valueChanges.subscribe((newRating) =>{
-        this.userfavouritesService.updateRatingBeer(1,BeerRating.BEURK)
+        if (newRating !== null ) {
+          this.userfavouritesService.updateRatingBeer(this.beer.id,newRating)
+        }
       });
    }
 
-
   ngOnInit(): void {
   }
-
-
 
 }

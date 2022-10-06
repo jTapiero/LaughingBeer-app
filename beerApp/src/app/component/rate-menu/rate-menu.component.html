@@ -1,8 +1,10 @@
 <div class="rate-menu-container">
     <mat-form-field class="rate-list">
         <mat-label>What is you're rating ?</mat-label>
-        <mat-select [formControl]="selectRateControl">
-            <mat-option *ngFor="let rate of BeerRating" [selected]="" value="{{rate}}">{{rate}}</mat-option>
+        <mat-select [formControl]="selectRateControl" >
+            <mat-option *ngFor="let rate of BeerRating"  value="{{rate}}">{{rate}}</mat-option>
         </mat-select>
       </mat-form-field>
 </div>
+
+<!--[selected]=""  -->
