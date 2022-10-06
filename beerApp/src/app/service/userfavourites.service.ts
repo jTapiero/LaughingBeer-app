@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Beer, favoriteBeer } from '@class/beer';
-import { BeerRating } from '@class/beer-rating';
-import { IconUpdate } from '@class/icon-update';
+import { Beer, favoriteBeer } from 'src/app/model/beer';
+import { BeerRating } from '@model/beer-rating';
+import { IconUpdate } from '@model/icon-update';
 import { LocalStorageService } from 'angular-web-storage';
 import { Observable, Subject } from 'rxjs';
 

@@ -1,11 +1,11 @@
 
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { Beer } from '@class/beer';
-import { ListMode } from '@class/list-mode';
+import { Beer } from '@model/beer';
+import { ListMode } from '@model/list-mode';
 import { BeerListHandlerService } from '@service/beer-list-handler.service';
 import { PunkApiService } from '@service/punk-api.service';
 import { UserfavouritesService } from '@service/userfavourites.service';
-import { BehaviorSubject, Observable, Observer } from 'rxjs';
+import {  Observer } from 'rxjs';
 
 @Component({
   selector: 'app-beer-list',

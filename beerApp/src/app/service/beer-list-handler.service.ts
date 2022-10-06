@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ListMode } from '@class/list-mode';
+import { ListMode } from '@model/list-mode';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({

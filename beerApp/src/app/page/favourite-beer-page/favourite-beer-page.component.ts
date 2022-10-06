@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Beer } from '@class/beer';
-import { ListMode } from '@class/list-mode';
+import { Beer } from '@model/beer';
+import { ListMode } from '@model/list-mode';
 import { UserfavouritesService } from '@service/userfavourites.service';
 
 @Component({

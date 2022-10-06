@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { favoriteBeer } from '@class/beer';
-import { BeerRating } from '@class/beer-rating';
+import { favoriteBeer } from '@model/beer';
+import { BeerRating } from '@model/beer-rating';
 import { UserfavouritesService } from '@service/userfavourites.service';
 
 @Component({

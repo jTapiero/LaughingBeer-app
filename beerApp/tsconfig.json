@@ -26,7 +26,7 @@
     "@page/*": ["src/app/page/*"],
     "@component/*": ["src/app/component/*"],
     "@service/*": ["src/app/service/*"],
-    "@class/*": ["src/app/class/*"],
+    "@model/*": ["src/app/model/*"],
     "@assets/*": ["src/app/assets/*"],
    }
   },

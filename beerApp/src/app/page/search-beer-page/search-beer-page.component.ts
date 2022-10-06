@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Beer } from '@class/beer';
+import { Beer } from '@model/beer';
 import { PunkApiService } from '@service/punk-api.service';
 
 @Component({

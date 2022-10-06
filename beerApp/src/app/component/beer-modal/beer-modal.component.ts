@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Beer } from '@class/beer';
-import { ListMode } from '@class/list-mode';
+import { Beer } from '@model/beer';
+import { ListMode } from '@model/list-mode';
 import { BeerListHandlerService } from '@service/beer-list-handler.service';
 
 @Component({

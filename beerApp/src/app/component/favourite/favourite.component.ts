@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Beer } from '@class/beer';
-import { IconUpdate } from '@class/icon-update';
+import { Beer } from '@model/beer';
+import { IconUpdate } from '@model/icon-update';
 import { UserfavouritesService } from '@service/userfavourites.service';
 
 @Component({
