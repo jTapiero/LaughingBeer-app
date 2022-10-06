@@ -1,17 +1,19 @@
 <div class="search-beer-container">
-    <div class="search-container">
-        <div class="title">
-            <mat-icon fontIcon="search"></mat-icon>
-            <h4>Search</h4>
-        </div>
-
-        <div class="form-container">
-            <mat-checkbox [(ngModel)]="isSearchModeOn" (change)="onChange($event)" class="search-mode-check">search mode</mat-checkbox>
-            <section class="form-search" *ngIf="isSearchModeOn">
-                    <label class="title-search">Search by Food Pairing</label>
-                    <input class="input-search" [formControl]="foodPairedInputControl" type="text" placeholder="Food Pairing">
-                    <button class="button-search" mat-raised-button (click)="onSubmitSearch()">Search</button>
-            </section>
-        </div>
-    </div>
+    <mat-expansion-panel class="panel-container"
+                         (opened)="onChangeStatePanel(true)"
+                         (closed)="onChangeStatePanel(false)">
+        <mat-expansion-panel-header class="header-search-panel">
+            <mat-panel-title >
+                <p class="title-search" *ngIf="!advancedSearchMode"><mat-icon fontIcon="search"></mat-icon> Avanced Search</p>
+                <p class="title-search" *ngIf="advancedSearchMode"> return to Browse Mode</p>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <section class="form-search">
+            <label class="title-food-pairing-search">Search by Food Pairing</label>
+            <input class="input-food-pairing-search" [formControl]="foodPairedInputControl" type="text" placeholder="Food Pairing">
+            <button class="button-food-pairing-search" mat-raised-button (click)="onSubmitSearch()">Search</button>
+        </section>
+    </mat-expansion-panel>    
 </div>
+
+

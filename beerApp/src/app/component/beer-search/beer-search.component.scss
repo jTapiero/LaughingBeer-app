@@ -1,44 +1,55 @@
 .search-beer-container{
-    background-color: #353b26;
-    width:15vw ;
-    height: 85.5vh;
-    max-height:85.5vh;
     padding: 0;
     margin: 0;
-}
-
-.search-container{
+    width:15vw ;
+    height: 87vh;
+    max-height: 87vh;
+    background-color: #353b26;
     display: flex;
     flex-direction: column;
-    color: antiquewhite;
-    margin-left: 15px;
+    align-items: center;
 
-    .title{
+}
+
+mat-expansion-panel{
+    color: antiquewhite !important;
+    width: 260px;
+    border-radius: 4px ;
+    background-color: #424a30 !important;
+    margin-top: 15px !important;
+    
+    .header-search-panel{
         display: flex;
         flex-direction: row;
-        align-items: center;    
-
+        align-items: center;
+        background-color: #424a30;
     }
 
-    .form-container{
-        padding: 0;
-        margin:0;
+    .header-search-panel:hover{
+        background-color: #424a30 !important;
+    }
 
-        .form-search{
-            margin: 15px 0 5px 0;
-            .title-search{
-                margin-bottom: 5px;
-            }
+    .title-search{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        color: antiquewhite ;
+    }
 
-            .input-search{
-                margin-bottom: 5px;
-            }
+    .form-search{
+        margin: 15px 0 5px 0;
+        .title-food-pairing-search{
+            margin-bottom: 30px;
+        }
 
-            .button-search{
-                background-color: #424a30;
-                color: antiquewhite;
-            }
+        .input-food-pairing-search{
+            margin-bottom: 30px;
+        }
+
+        .button-food-pairing-search{
+            background-color: #424a30;
+            color: antiquewhite;
         }
     }
-
 }

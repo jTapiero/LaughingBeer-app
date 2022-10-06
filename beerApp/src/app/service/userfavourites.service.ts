@@ -13,7 +13,6 @@ export class UserfavouritesService {
   private removeFromListSubject = new Subject<number>()
   private updateFavouriteBeerSubject = new Subject<IconUpdate>()
 
-  
   public get removeFromListEvent() : Observable<number> {
     return this.removeFromListSubject.asObservable();
   }
@@ -21,7 +20,6 @@ export class UserfavouritesService {
   public get updateFavouriteBeerEvent() : Observable<IconUpdate> {
     return this.updateFavouriteBeerSubject.asObservable();
   }
-  
 
   constructor(private local: LocalStorageService) {
     

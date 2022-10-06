@@ -1,55 +1,44 @@
 
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Beer } from '@model/beer';
-import { ListMode } from '@model/list-mode';
+import { ListBeerMode } from '@model/list-beer-mode';
 import { BeerListHandlerService } from '@service/beer-list-handler.service';
 import { PunkApiService } from '@service/punk-api.service';
 import { UserfavouritesService } from '@service/userfavourites.service';
-import {  Observer } from 'rxjs';
+import { Observer } from 'rxjs';
 
 @Component({
   selector: 'app-beer-list',
   templateUrl: './beer-list.component.html',
   styleUrls: ['./beer-list.component.scss']
 })
-export class BeerListComponent implements OnInit,OnChanges {
+export class BeerListComponent implements OnInit {
 
-  @ViewChild('divList')el!: ElementRef;
+  @ViewChild('divList')elem!: ElementRef;
   @Input() listBeer:Array<Beer> = [];
-  @Input() isBrowseModeOn:boolean = true;
-  @Input() isFavouriteList:boolean = false;
-  @Input() modeOn:ListMode = ListMode.BROWSE;
+  @Input() modeOn:ListBeerMode = ListBeerMode.BROWSE;
 
-  pageNumber:number = 1;
-  endScroll:boolean = false;
+  private pageNumber:number = 1;
+  private endScroll:boolean = false;
 
   constructor( private beerListHandlerService:BeerListHandlerService,
                private punkApiService:PunkApiService,
                private userfavouritesService:UserfavouritesService ) {
-    this.removeCardFromListListener();
-   }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['isBrowseModeOn']?.currentValue == true ) {
-      this.endScroll = false;
-      this.pageNumber = 1;
-      this.scrolListToTop();
-    }
-
-    if (changes['modeOn']) {
-      this.beerListHandlerService.setListModeStatus = this.modeOn;
-    }
+      this.beerListHandlerService.listModeEvent.subscribe((mode)=>{
+        this.modeOn = mode;
+        this.listModeHandler();
+      });
   }
 
   ngOnInit(): void {
+    this.listModeHandler();
   }
 
   onScroll():void{
-
     const handleApiResponse:Observer<Beer[]| any> = {
       next:(pageBeers:Array<Beer>)=>{
         if (pageBeers) {
-          this.listBeer.push(...pageBeers) 
+          this.listBeer.push(...pageBeers);
         } else {
           this.endScroll = true;
         }
@@ -58,35 +47,44 @@ export class BeerListComponent implements OnInit,OnChanges {
       complete:()=>{},
     }
 
-    if (!this.endScroll && this.isBrowseModeOn) {
+    if (!this.endScroll && this.modeOn == ListBeerMode.BROWSE) {
       this.punkApiService.getBeerPage(++this.pageNumber)
-      .subscribe(handleApiResponse)     
+      .subscribe(handleApiResponse) ;
     }
   }
 
-  removeFromFavouriteList(idBeer:number):void{
-    if (this.isFavouriteList) {
-      this.removeFromList(idBeer);
+  private listModeHandler():void{
+    if (this.modeOn == ListBeerMode.BROWSE ) {
+      this.endScroll = false;
+      this.pageNumber = 1;
+      this.scrolListToTop();
+    }
+
+    if (this.modeOn == ListBeerMode.FAVOURITE) {
+      this.removeBeerFromListListener();
     }
   }
 
   private scrolListToTop():void{
-    if (this.el !== undefined) {
-      this.el.nativeElement.scrollTo(0,0)
+    if (this.elem !== undefined) {
+      this.elem.nativeElement.scrollTo(0,0)
     }
-    
   }
 
-  private removeCardFromListListener():void{
+  private removeBeerFromListListener():void{
     this.userfavouritesService.removeFromListEvent.subscribe(
-      (idBeer:number)=>{ this.removeFromFavouriteList(idBeer)}
+      (beerId:number)=>{ 
+        if (this.modeOn == ListBeerMode.FAVOURITE) {
+          this.removeFromList(beerId);
+        }
+      }
     );
-  }
-  
-  private removeFromList(idBeer:number):void{
+  }  
+
+  private removeFromList(beerId:number):void{
     this.listBeer.forEach((beer,idx,list)=>{
-      if (beer.id == idBeer) {
-        list.splice(idx,1)
+      if (beer.id == beerId) {
+        list.splice(idx,1);
       }
     })
   }

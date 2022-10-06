@@ -1,33 +1,38 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ListBeerMode } from '@model/list-beer-mode';
+import { BeerListHandlerService  } from '@service/beer-list-handler.service';
 
 
 @Component({
   selector: 'app-beer-search',
   templateUrl: './beer-search.component.html',
-  styleUrls: ['./beer-search.component.scss']
+  styleUrls: ['./beer-search.component.scss'],
+  encapsulation:ViewEncapsulation.None
 })
 export class BeerSearchComponent implements OnInit {
 
-  @Output() foodPairedSearch= new EventEmitter<string>()
-  @Output() isBrowserModeOn= new EventEmitter<boolean>()
+  @Output() foodPairedSearch= new EventEmitter<string>();
 
-  foodPairedInputControl = new FormControl<string>('',{updateOn:"change"})
-  isSearchModeOn:boolean = false;
+  foodPairedInputControl = new FormControl<string>('',{updateOn:"change"});
+  advancedSearchMode:boolean = false;
 
-  constructor() { }
-  
+  constructor(private beerListHandlerService:BeerListHandlerService) { }
+
   ngOnInit(): void {
   }
 
-
-
   onSubmitSearch(): void{
-    let searchPattern = (this.foodPairedInputControl.value )?this.foodPairedInputControl.value:"";
-    this.foodPairedSearch.emit(searchPattern)
+    this.beerListHandlerService.listMode = ListBeerMode.SEARCH;
+    let searchPattern = (this.foodPairedInputControl.value)?this.foodPairedInputControl.value:"";
+    this.foodPairedSearch.emit(searchPattern);
   }
 
-  onChange(event:any): void{
-      this.isBrowserModeOn.emit(!this.isSearchModeOn)
+  onChangeStatePanel(isSearchOn:boolean): void{
+    this.advancedSearchMode = isSearchOn;
+    if (!this.advancedSearchMode) {
+      this.beerListHandlerService.listMode = ListBeerMode.BROWSE;
+    }
   }
+
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ListMode } from '@model/list-mode';
+import { ListBeerMode } from '@model/list-beer-mode';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -7,18 +7,18 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class BeerListHandlerService {
 
-  private listModeOn:ListMode = ListMode.BROWSE;
-  private listModeSubject = new BehaviorSubject<ListMode>(ListMode.BROWSE); 
+  private listModeOn:ListBeerMode = ListBeerMode.BROWSE;
+  private listModeSubject = new BehaviorSubject<ListBeerMode>(ListBeerMode.BROWSE); 
 
-  public get listModeStatus() : Observable<ListMode> {
+  public get listModeEvent() : Observable<ListBeerMode> {
     return this.listModeSubject.asObservable();
   }
  
-  public get statusList() : ListMode {
+  public get listMode() : ListBeerMode {
     return this.listModeOn;
   }
   
-  public set setListModeStatus(mode : ListMode) {
+  public set listMode(mode : ListBeerMode) {
     this.listModeOn = mode;
     this.listModeSubject.next(mode);
   }

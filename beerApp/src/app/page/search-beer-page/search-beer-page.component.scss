@@ -1,10 +1,10 @@
 @import '../../app.component.scss';
 
-.SearchPage{
+.search-page{
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: max-content; 
+    height: 100vh; 
     position: relative;
     background-color: $greenGentleman;
 }
@@ -14,5 +14,34 @@
     padding: 0;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
 }
+
+app-header{
+    padding: 0;
+    margin: 0;
+    width: 100vw ;
+    max-width: 100vw;
+    height: 20vh;
+    max-height: 20vh;
+}
+
+app-beer-list{
+    padding: 0;
+    margin: 0;
+    width: 85vw ;
+    max-width: 85vw;
+    height: 80vh;
+    max-height: 80vh;
+}
+
+app-beer-search{
+    padding: 0;
+    margin: 0;
+    width: 15vw ;
+    max-width: 15vw;
+    height: 80vh;
+    max-height: 80vh;
+}
+
+

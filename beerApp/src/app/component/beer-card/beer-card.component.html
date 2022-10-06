@@ -1,7 +1,7 @@
-<button mat-raised-button (click)="openBeerModal()" class="beerCard" >
-    <img class="beerImage" src="{{beer.image_url}}" alt="{{beer.name}}">
-    <div class="cardTitle">
-        <h4 class="beerTitle">{{beer.name}}</h4>
+<button mat-raised-button (click)="openBeerModal()" class="beer-card" >
+    <img class="beer-image" src="{{beer.image_url}}" alt="{{beer.name}}">
+    <div class="card-title">
+        <h4 class="beer-title">{{beer.name}}</h4>
         <app-favourite-icon [beer]="beer"></app-favourite-icon>
     </div>   
 </button >

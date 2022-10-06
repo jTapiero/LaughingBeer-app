@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Beer } from '@model/beer';
+import { ListBeerMode } from '@model/list-beer-mode';
 import { PunkApiService } from '@service/punk-api.service';
+import { BeerListHandlerService } from '@service/beer-list-handler.service';
 
 @Component({
   selector: 'app-search-beer-page',
@@ -9,10 +11,22 @@ import { PunkApiService } from '@service/punk-api.service';
 })
 export class SearchBeerPageComponent implements OnInit {
 
-  beers:Array<Beer> = [];
-  isBrowseModeOn = true;
+  public beers:Array<Beer> = [];
+  modeOn:ListBeerMode = ListBeerMode.BROWSE;
 
-  constructor(private punkApiService:PunkApiService) { }
+  public get ListBeerMode(): typeof ListBeerMode {
+    return ListBeerMode; 
+  }
+
+  constructor(private punkApiService:PunkApiService,
+              private beerListHandlerService:BeerListHandlerService) {
+    this.beerListHandlerService.listModeEvent.subscribe((mode)=>{
+      this.modeOn = mode;
+      if (this.modeOn == ListBeerMode.BROWSE) {
+        this.initBrowseMode();
+      }
+    })
+   }
 
   ngOnInit(): void {
     this.initBrowseMode();
@@ -23,17 +37,9 @@ export class SearchBeerPageComponent implements OnInit {
       this.beers = beers as Array<Beer>});
   }
 
-  changeMode(browserStatus:boolean){
-    this.isBrowseModeOn = browserStatus;
-    if (this.isBrowseModeOn == true) {
-      this.initBrowseMode();
-    }
-  }
-
   private initBrowseMode():void{
     this.punkApiService.getBeerPage(1).subscribe((beers) => {    
       this.beers = beers as Array<Beer>});
-
   }
 
 }

@@ -10,7 +10,7 @@ import { UserfavouritesService } from '@service/userfavourites.service';
 export class CheckRemoveModalComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<CheckRemoveModalComponent>,
-              private userfavouritesService:UserfavouritesService  ) { }
+              private userfavouritesService:UserfavouritesService ) { }
 
   ngOnInit(): void {
   }
