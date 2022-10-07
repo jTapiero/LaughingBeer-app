@@ -33,13 +33,15 @@ export class SearchBeerPageComponent implements OnInit {
   }
 
   OnFoodPairedSearch(data:string):void{
-    this.punkApiService.getFoodPairingSearch(data).subscribe((beers) => {    
-      this.beers = beers as Array<Beer>});
+    this.punkApiService.getFoodPairingSearch(data).subscribe(
+      (beers) => {this.beers = beers as Array<Beer>},
+      (error) => { this.beers = [] ; console.error(error)});
   }
 
   private initBrowseMode():void{
-    this.punkApiService.getBeerPage(1).subscribe((beers) => {    
-      this.beers = beers as Array<Beer>});
+    this.punkApiService.getBeerPage(1).subscribe(
+      (beers) => { this.beers = beers as Array<Beer>},
+      (error) => { this.beers = [] ; console.error(error)});
   }
 
 }

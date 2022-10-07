@@ -70,11 +70,7 @@ export class UserfavouritesService {
 
    updateRatingBeer(beerId:number,beerRating:BeerRating):void{
       let beer:FavoriteBeer = this.local.get(`${beerId}`);
-      console.log(beer)
       beer.rating = beerRating;
       this.local.set(`${beerId}`,beer)
-   }
-
-
-   
+   }   
 }

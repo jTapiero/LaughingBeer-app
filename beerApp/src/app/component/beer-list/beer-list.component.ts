@@ -43,7 +43,7 @@ export class BeerListComponent implements OnInit {
           this.endScroll = true;
         }
       },
-      error:(error)=>{},//todo
+      error:(error)=>{ console.error(error)},
       complete:()=>{},
     }
 

@@ -18,9 +18,6 @@ export class PunkApiService {
 
   getBeerPage(pageNumber:number):Observable<any> {
     let url = `${this.PUNK_API_URL}?page=${pageNumber}&per_page=${this.BEER_BY_PAGE}`;
-    //error
-    //empty array
-    
     return this.httpClient.get(url);
   }
 
