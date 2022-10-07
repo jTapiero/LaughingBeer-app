@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Beer } from '@model/beer';
+import { Beer, FavoriteBeer } from '@model/beer';
 import { BeerModalComponent } from '@component/beer-modal/beer-modal.component';
 
 @Component({
@@ -10,7 +10,7 @@ import { BeerModalComponent } from '@component/beer-modal/beer-modal.component';
 })
 export class BeerCardComponent implements OnInit {
 
-  @Input() beer:Beer = {} as Beer;
+  @Input() beer:Beer = {} as Beer | FavoriteBeer;
   
   constructor(public modal: MatDialog) { }
 

@@ -18,8 +18,8 @@ export interface BeerVolume {
     unit:string;
 }
 
-export interface favoriteBeer extends Beer {
-    rating :BeerRating | null;
+export interface FavoriteBeer extends Beer {
+    rating :BeerRating ;
 }
 
 

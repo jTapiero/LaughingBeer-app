@@ -8,7 +8,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-   
 }
 
 .close-button{
@@ -45,8 +44,6 @@
     height:540px;
 }
 
-
-
 .description-beer-container{
     align-self: flex-start;
     display: flex;
@@ -56,7 +53,6 @@
     height: 30vh ;
     max-width: 40vw;
     max-height: 30vh;
-
 
     .beer-name{
        margin-bottom: 5px; 
@@ -121,7 +117,6 @@
             font-style: italic ,bold;
             margin-right: 5px;
         }
-
     }
 
     .beer-like-rate{
@@ -133,9 +128,5 @@
             color: antiquewhite;
             margin-left: auto;
         }
-
-
     }
-
-
 }

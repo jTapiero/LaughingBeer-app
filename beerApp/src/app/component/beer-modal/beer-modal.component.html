@@ -28,7 +28,7 @@
             <h4 class="value">{{data.contributed_by}}</h4>
         </div>
         <div class="beer-like-rate"> 
-            <app-rate-menu class="rate"  *ngIf="modeModal == ListBeerMode.FAVOURITE" class="rate"></app-rate-menu>
+            <app-rate-menu class="rate" [beerId]="data.id" *ngIf="modeModal == ListBeerMode.FAVOURITE" class="rate"></app-rate-menu>
             <app-favourite-icon class="like" [beer]="data"></app-favourite-icon>
         </div>  
     </div>

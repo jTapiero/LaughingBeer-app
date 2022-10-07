@@ -16,6 +16,7 @@ export class BeerSearchComponent implements OnInit {
 
   foodPairedInputControl = new FormControl<string>('',{updateOn:"change"});
   advancedSearchMode:boolean = false;
+  searchPattern:string = "";
 
   constructor(private beerListHandlerService:BeerListHandlerService) { }
 
@@ -24,14 +25,16 @@ export class BeerSearchComponent implements OnInit {
 
   onSubmitSearch(): void{
     this.beerListHandlerService.listMode = ListBeerMode.SEARCH;
-    let searchPattern = (this.foodPairedInputControl.value)?this.foodPairedInputControl.value:"";
-    this.foodPairedSearch.emit(searchPattern);
+    this.searchPattern = (this.foodPairedInputControl.value)?this.foodPairedInputControl.value:"";
+    this.foodPairedSearch.emit(this.searchPattern);
+    this.foodPairedInputControl.setValue("");
   }
 
   onChangeStatePanel(isSearchOn:boolean): void{
     this.advancedSearchMode = isSearchOn;
     if (!this.advancedSearchMode) {
       this.beerListHandlerService.listMode = ListBeerMode.BROWSE;
+      this.searchPattern = "";
     }
   }
 
